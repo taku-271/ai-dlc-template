@@ -15,6 +15,7 @@
 - 設計書にない仕様を勝手に決めない。不明な点は必ず質問する
 - 実装計画は必ず人間に提示して承認を得てから進める
 - 設計書と実装に差異が出た場合は必ず報告する
+- 実装中に不明点・不整合を発見した場合は即座に作業を止めて報告する
 - `docs/inception/security-policy.md` のルールを常に守る
 - `docs/inception/domain-model.md` の用語定義を必ず参照する
 - `docs/inception/requirements.md` のスコープ外の実装はしない
