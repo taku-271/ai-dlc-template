@@ -13,17 +13,24 @@
 
 ## セットアップ
 
-### 1. このテンプレートからリポジトリを作成する
+### パターン A：新規リポジトリ（GitHub テンプレートから）
 
 GitHub の「Use this template」からリポジトリを作成してください。
 
-### 2. Claude Code でプロジェクトを開く
+### パターン B：既存リポジトリへインストール
 
 ```bash
-claude
+bash /path/to/ai-dlc-template/install.sh /path/to/your-repo
 ```
 
-### 3. /init を実行する
+`.claude/`・`CLAUDE.md`・`docs/inception/`・`docs/_templates/` をコピーします。  
+既存ファイルは上書き前に確認プロンプトが表示されます。
+
+### 最後に：Claude Code で /init を実行する
+
+```bash
+claude  # 対象リポジトリで起動
+```
 
 ```
 /init
@@ -76,6 +83,7 @@ claude
 | `/new-feature [名前]` | spec.md だけ生成する |
 | `/new-test-spec [名前]` | test-spec.md だけ生成する |
 | `/implement [名前]` | 実装だけやり直す |
+| `/fix [バグの概要]` | バグ修正（spec.md なし・原因特定→失敗テスト→修正） |
 
 **例：spec.md を修正した後に実装だけやり直す**
 
