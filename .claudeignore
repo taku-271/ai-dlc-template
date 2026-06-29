@@ -1,0 +1,22 @@
+# センシティブファイル - AIが読まないよう除外
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+.secret/
+
+# 顧客・個人データ
+data/
+dump/
+backup/
+*.sql.gz
+
+# ビルド成果物（AIに読ませても意味がない）
+node_modules/
+dist/
+build/
+.next/
+coverage/
