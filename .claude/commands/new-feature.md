@@ -2,6 +2,17 @@
 
 引数として機能名を受け取ります（例: `/new-feature user-auth`）。
 
+## モデル戦略（トークン削減）
+
+| ステップ | モデル | 理由 |
+|---|---|---|
+| Step 1 コンテキスト読み込み | メインセッション | 質問の準備が必要 |
+| Step 2 ヒアリング | メインセッション | 人間との対話が必要 |
+| Step 3 spec.md 生成 | `sonnet`（Agent ツール） | 構造化ドキュメント生成。深い推論不要 |
+| Step 4 domain-model 確認 | メインセッション | 設計判断が必要 |
+
+---
+
 ## Step 1: コンテキストの読み込み
 
 以下を読んでください：
@@ -21,7 +32,9 @@
 
 ## Step 3: spec.md の生成
 
-`docs/_templates/feature.md` をベースに `docs/features/[機能名]/spec.md` を生成してください。
+**Agent ツール（model: `sonnet`）を使ってサブエージェントで実行してください。**
+
+サブエージェントへの指示: Step 1 で読んだコンテキストと Step 2 のヒアリング結果をもとに、`docs/_templates/feature.md` をベースに `docs/features/[機能名]/spec.md` を生成する。
 
 - API定義は CLAUDE.md で確認したAPI層に合わせる
 - 機能固有のセキュリティ・パフォーマンス要件を必ず含める

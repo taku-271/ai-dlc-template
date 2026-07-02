@@ -2,6 +2,15 @@
 
 引数として機能名を受け取ります（例: `/new-test-spec user-auth`）。
 
+## モデル戦略（トークン削減）
+
+| ステップ | モデル | 理由 |
+|---|---|---|
+| Step 1 設計書の読み込み | メインセッション | 未解決事項の確認が必要 |
+| Step 2 test-spec.md の生成 | `sonnet`（Agent ツール） | spec からテストケースを機械的に生成 |
+
+---
+
 ## Step 1: 設計書の読み込み
 
 以下を読んでください：
@@ -13,7 +22,9 @@ spec.md に「未解決事項」がある場合は実行前に確認してくだ
 
 ## Step 2: test-spec.md の生成
 
-`docs/_templates/test-spec.md` をベースに `docs/features/[機能名]/test-spec.md` を生成してください。
+**Agent ツール（model: `sonnet`）を使ってサブエージェントで実行してください。**
+
+サブエージェントへの指示: `docs/_templates/test-spec.md` をベースに `docs/features/[機能名]/test-spec.md` を生成する。
 
 **test-spec.md は「成功の定義」を言語化する作業**。
 「何をもって実装完了とするか」を先に言語化することで、実装フェーズのぶれを防ぐ。
