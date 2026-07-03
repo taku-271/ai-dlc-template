@@ -51,25 +51,29 @@ copy_item() {
 }
 
 # ── ファイルコピー ────────────────────────────────────────────
-echo "[1/5] Copying .claude/ ..."
+echo "[1/6] Copying .claude/ ..."
 copy_item "$TEMPLATE_DIR/.claude" "$TARGET/.claude"
 
 echo ""
-echo "[2/5] Copying CLAUDE.md ..."
+echo "[2/6] Copying CLAUDE.md ..."
 copy_item "$TEMPLATE_DIR/CLAUDE.md" "$TARGET/CLAUDE.md"
 
 echo ""
-echo "[3/5] Copying docs/ ..."
+echo "[3/6] Copying docs/ ..."
 mkdir -p "$TARGET/docs"
 copy_item "$TEMPLATE_DIR/docs/inception"  "$TARGET/docs/inception"
 copy_item "$TEMPLATE_DIR/docs/_templates" "$TARGET/docs/_templates"
 
 echo ""
-echo "[4/5] Copying .learnings/ ..."
+echo "[4/6] Copying .learnings/ ..."
 copy_item "$TEMPLATE_DIR/.learnings" "$TARGET/.learnings"
 
 echo ""
-echo "[5/5] Creating logs/ directory ..."
+echo "[5/6] Copying .steering/ ..."
+copy_item "$TEMPLATE_DIR/.steering" "$TARGET/.steering"
+
+echo ""
+echo "[6/6] Creating logs/ directory ..."
 mkdir -p "$TARGET/logs"
 echo "  Created: $TARGET/logs/"
 
