@@ -47,19 +47,21 @@ claude  # 対象リポジトリで起動
 1つのコマンドで設計書生成 → テスト仕様生成 → 実装まで一気通貫で進みます。
 
 ```
-/feature-flow [機能名]
+/feature-flow [機能名 または やりたいことの説明]
 ```
 
 **例：**
 
 ```
-/feature-flow user-auth
+/feature-flow このアプリケーションにログイン機能を追加したい
 ```
+
+機能名は `user-auth` のような kebab-case でも、上記のような自然文でも構いません。自然文の場合は Claude が内容から適切な機能名（例: `user-auth`）を決めて `docs/features/[機能名]/` 以下に設計書を作成します。
 
 タスクサイズによってフローが変わります：
 
 ```
-/feature-flow user-auth（Small判定）
+/feature-flow このアプリケーションにログイン機能を追加したい（Small判定）
     │
     ├─ Claude が spec.md を生成
     ├─ Claude が test-spec.md を生成
@@ -69,7 +71,7 @@ claude  # 対象リポジトリで起動
 ```
 
 ```
-/feature-flow user-auth（Medium/Large判定）
+/feature-flow このアプリケーションにログイン機能を追加したい（Medium/Large判定）
     │
     ├─ Claude が spec.md を生成
     │      ↓ レビュー・承認（「OK」と送信）
