@@ -1,3 +1,8 @@
+---
+name: review-apply
+description: GitHub PRのレビュー指摘を理解し、TDDで修正し、.learnings/に学びを保存するフロー。レビューコメントに対応する時に使う。
+---
+
 # コードレビュー指摘の理解・修正・学習フロー
 
 引数としてPR番号を受け取ります（例: `/review-apply 42`）。

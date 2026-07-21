@@ -1,3 +1,8 @@
+---
+name: implement
+description: 既存のspec.md・test-spec.mdをもとにTDDでコードを実装する。設計書はあるが実装がまだの機能に着手する時に使う。
+---
+
 # 設計書からコードを実装する
 
 引数として機能名を受け取ります（例: `/implement user-auth`）。

@@ -42,24 +42,34 @@ claude  # 対象リポジトリで起動
 
 ## 開発フロー
 
-### 基本：/develop（推奨）
+### 基本：/feature-flow（推奨）
 
-1つのコマンドで設計書生成 → レビュー → テスト仕様生成 → レビュー → 実装 まで一気通貫で進みます。
+1つのコマンドで設計書生成 → テスト仕様生成 → 実装まで一気通貫で進みます。
 
 ```
-/develop [機能名]
+/feature-flow [機能名]
 ```
 
 **例：**
 
 ```
-/develop user-auth
+/feature-flow user-auth
 ```
 
-フローは以下の通りです：
+タスクサイズによってフローが変わります：
 
 ```
-/develop user-auth
+/feature-flow user-auth（Small判定）
+    │
+    ├─ Claude が spec.md を生成
+    ├─ Claude が test-spec.md を生成
+    └─ Claude が E2Eテスト → コードを実装
+           ↓
+     完了報告（ここで人間がまとめてレビュー）
+```
+
+```
+/feature-flow user-auth（Medium/Large判定）
     │
     ├─ Claude が spec.md を生成
     │      ↓ レビュー・承認（「OK」と送信）
@@ -70,7 +80,7 @@ claude  # 対象リポジトリで起動
     └─ Claude が E2Eテスト → コードを実装
 ```
 
-人間がやることは **「OK」と送信するだけ**です。
+Small（影響ファイル1〜3・実装1日以内）と判定されたタスクは承認待ちなしで自動的に完走し、完了報告の時点で事後レビューします。Medium/Large は各ステップで人間の承認（「OK」の送信）を得てから進みます。どちらの場合も spec.md・test-spec.md・status.md は必ず生成されます。
 
 ---
 
@@ -84,6 +94,7 @@ claude  # 対象リポジトリで起動
 | `/new-test-spec [名前]` | test-spec.md だけ生成する |
 | `/implement [名前]` | 実装だけやり直す |
 | `/fix [バグの概要]` | バグ修正（spec.md なし・原因特定→失敗テスト→修正） |
+| `/review-apply [PR番号]` | PRのレビュー指摘を理解・修正し `.learnings/` に保存する |
 
 **例：spec.md を修正した後に実装だけやり直す**
 
@@ -102,12 +113,14 @@ claude  # 対象リポジトリで起動
 │   ├── settings.json                # 会話ログ自動保存フック
 │   ├── scripts/
 │   │   └── save-log.sh
-│   └── commands/
-│       ├── init.md                  # /init
-│       ├── develop.md               # /develop
-│       ├── new-feature.md           # /new-feature
-│       ├── new-test-spec.md         # /new-test-spec
-│       └── implement.md             # /implement
+│   └── skills/
+│       ├── init/SKILL.md            # /init
+│       ├── feature-flow/SKILL.md    # /feature-flow
+│       ├── new-feature/SKILL.md     # /new-feature
+│       ├── new-test-spec/SKILL.md   # /new-test-spec
+│       ├── implement/SKILL.md       # /implement
+│       ├── fix/SKILL.md             # /fix
+│       └── review-apply/SKILL.md    # /review-apply
 ├── docs/
 │   ├── inception/                   # プロジェクト全体のドキュメント
 │   │   ├── requirements.md          # プロダクト要件・ビジネスルール

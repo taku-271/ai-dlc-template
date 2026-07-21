@@ -1,3 +1,8 @@
+---
+name: new-feature
+description: 機能の設計書（spec.md）だけを生成する。コードは書かない。ヒアリングをしてdocs/features/[機能名]/spec.mdを作りたい時に使う。
+---
+
 # 設計書（spec.md）の生成
 
 引数として機能名を受け取ります（例: `/new-feature user-auth`）。

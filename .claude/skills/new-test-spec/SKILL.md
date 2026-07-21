@@ -1,3 +1,8 @@
+---
+name: new-test-spec
+description: 既存のspec.mdをもとにテスト仕様書（test-spec.md）を生成する。ハッピーパス・異常系・セキュリティケースを含める。実装前にテストケースを言語化したい時に使う。
+---
+
 # テスト仕様書（test-spec.md）の生成
 
 引数として機能名を受け取ります（例: `/new-test-spec user-auth`）。
